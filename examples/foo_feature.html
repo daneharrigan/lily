@@ -16,7 +16,10 @@
         After(function(){ document.getElementById('s-1').innerHTML = count });
         Given('I increment by 1', function(){ count++; });
         And('I increment by 1 again', function(){ count++; });
-        Then('I increment by 1 one last time', function(){ count++; });
+        Then('I increment by 1 one last time', function(){
+          count++;
+          expect(count).toEqual(3);
+        });
       });
 
       /*****************************************/

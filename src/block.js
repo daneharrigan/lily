@@ -24,7 +24,15 @@ lily.Block.prototype.execute = function(){
     self.callback('before');
 
     while(step = lily.steps.shift())
-      step.call(self);
+    {
+      var args = step.desc.match(/('[^']*')|("[^"]*")/g);
+      if(!args)
+        args = [];
+      for(var i=0;i<args.length;i++)
+        args[i] = args[i].replace(/^("|')|("|')$/g,'');
+
+      step.block.apply(self, args);
+    }
 
     self.callback('after');
     return response;

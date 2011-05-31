@@ -1,5 +1,5 @@
 lily.Step = function(desc, block){
-  lily.steps.push(block);
+  lily.steps.push({ desc: desc, block: block });
 };
 
 lily.Given  = lily.Step;

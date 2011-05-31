@@ -18,6 +18,7 @@ usage within a browser.
 ### Plans
 
     Scenario('Asking John Smith a question',function(){
+      var person;
       Before(function(){
         person = new Person('John Smith');
       });
