@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/lily.js"></script>
+  </head>
+  <body>
+    <h2>Results</h2>
+    <ul>
+      <li>Scenario 1: <span id="s-1"></span></li>
+    </ul>
+    <script type="text/javascript">
+      Scenario('Counting to 3', function(){
+        var count;
+
+        Before(function(){ count = 0; });
+        After(function(){ document.getElementById('s-1').innerHTML = count });
+        Given('I increment by 1', function(){ count++; });
+        And('I increment by 1 again', function(){ count++; });
+        Then('I increment by 1 one last time', function(){ count++; });
+      });
+
+      /*****************************************/
+
+      // runner
+      while(block = lily.blocks.shift())
+        block.execute();
+    </script>
+  </body>
+</html>
