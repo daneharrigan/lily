@@ -20,6 +20,8 @@ lily.Block.prototype.execute = function(){
 
   try
   {
+    lily.callbacks.beforeScenario(self.desc, self.block);
+
     self.block.call(self);
     self.callback('before');
 
@@ -31,16 +33,20 @@ lily.Block.prototype.execute = function(){
       for(var i=0;i<args.length;i++)
         args[i] = args[i].replace(/^("|')|("|')$/g,'');
 
+      lily.callbacks.beforeStep(step);
       step.block.apply(self, args);
+      lily.callbacks.afterStep(step);
     }
 
     self.callback('after');
+    lily.callbacks.afterScenario(self.desc, self.block);
     return response;
   }
   catch(e)
   {
     response.success = false;
     response.error = e.message;
+    lily.callbacks.afterException(e.message);
     return response;
   }
 };

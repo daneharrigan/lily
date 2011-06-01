@@ -1,11 +1,22 @@
-lily.Step = function(desc, block){
-  lily.steps.push({ desc: desc, block: block });
+lily.Step = function(desc, block, type){
+  lily.steps.push({ desc: desc, block: block, type: type });
 };
 
-lily.Given  = lily.Step;
-lily.When   = lily.Step;
-lily.Then   = lily.Step;
-lily.And    = lily.Step;
+lily.Given = function(desc, block) {
+  lily.Step(desc, block, 'Given');
+};
+
+lily.When = function(desc, block) {
+  lily.Step(desc, block, 'When');
+};
+
+lily.Then = function(desc, block) {
+  lily.Step(desc, block, 'Then');
+};
+
+lily.And = function(desc, block) {
+  lily.Step(desc, block, 'And');
+};
 
 Given  = lily.Given;
 When   = lily.When;
