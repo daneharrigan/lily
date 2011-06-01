@@ -10,5 +10,9 @@ lily.Matcher.prototype = {
   toBeEmpty: function(){
     if( !(this.subject == '' || this.subject == null) )
       throw new Error(this.subject + ' is not empty');
+  },
+  toExist: function(){
+    if( !(this.subject != lily.__undefined__ || this.subject != null) )
+      throw new Error(this.subject + ' does not exist');
   }
 };
