@@ -1,5 +1,6 @@
 lily.Scenario = function(desc, block){
   lily.blocks.push(new lily.Block(desc, block));
+  lily.callbacks.afterScenarioAdded(desc, block);
 };
 
 lily.Before = function(block){

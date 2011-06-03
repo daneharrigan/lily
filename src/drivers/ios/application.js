@@ -1,6 +1,6 @@
 var IOSApplication = function(){
-  var target  = UIATarget.localTarget();
-  this.window = target.frontMostApp().mainWindow();
+  this.target = UIATarget.localTarget();
+  this.window = this.target.frontMostApp().mainWindow();
 };
 IOSApplication.prototype.getElementByLabel = function(label){
   return this.window.buttons()[label] || this.window.elements()[label] || this.window.textFields()[label];

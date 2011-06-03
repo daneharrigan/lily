@@ -17,8 +17,9 @@ namespace :lily do
     task :drivers do
       Dir.glob('src/drivers/*').each do |full_path|
         directory = full_path.split('/').last
+        # build driver
         File.open("lib/drivers/#{directory}.js",'w') do |driver|
-          Dir.glob("#{full_path}/*.js").each do |file_name|
+          Dir.glob("#{full_path}/*.js").sort.each do |file_name|
             driver.puts File.read(file_name)
           end
         end
