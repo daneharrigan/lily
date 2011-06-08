@@ -1,5 +1,6 @@
 lily.callbacks.beforeScenario =  function(desc, scenario){ Logger.append(desc); };
 lily.callbacks.beforeStep     = function(step){ Logger.append('  ' + step.type + ' ' + step.desc); };
+lily.callbacks.afterStep      = function(step) { optionalDelay(1) };
 lily.callbacks.afterException = function(msg){ Logger.fail(msg); };
 lily.callbacks.afterMatch = function(msg){ Logger.pass(msg); };
 
