@@ -20,5 +20,3 @@ Scenario('Logging into the application', function(){
     expect(element).toExist();
   });
 });
-
-#import "runner.js"
